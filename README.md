@@ -6,10 +6,14 @@ Equipo:
 Raúl Dorado Pulido
 Adrián Garrido Sierra
 
-Descripción: Proyecto desarrollado por un grupo de alumnos de la asignatura ingeniería web de universidad complutense de Madrid.
-Todo el material utilizado para la realización del proyecto son los obtenidos en las clases de esta misma asignatura.
-Y para su realización damos muestra del conocimiento obtenido en estas clases.
-
 Partimos de una base expuesta por el profesor Manuel Freire. En su github se puede encontrar esta base.
 https://github.com/manuel-freire/iw.git
+
+A partir de esta base, desarrollamos el proyecto. Consiste en una página donde se permitea la organización de jugadores con el fin de mejorar la experiencia individual y colectiva en los juegos.
+El proyecto cuenta con las funcionalidades:
+- Organización de los jugadores en distintos clanes.
+- Creación de eventos.
+- Visualización de eventos en calendario.
+- Sistema de mensajería entre jugadores del mismo clan o del mismo evento.
+
 
