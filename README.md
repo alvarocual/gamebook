@@ -10,5 +10,5 @@ Descripción: Proyecto desarrollado por un grupo de alumnos de la asignatura ing
 Todo el material utilizado para la realización del proyecto son los obtenidos en las clases de esta misma asignatura.
 Y para su realización damos muestra del conocimiento obtenido en estas clases.
 
-Partimos de una base expuesta por el profesor Manuel Freire.
+Partimos de una base expuesta por el profesor Manuel Freire. En su github se puede encontrar esta base.
 
