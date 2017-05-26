@@ -18,8 +18,7 @@
     <!-- Bootstrap core CSS -->
     <link href="<c:url value="${s}/css/bootstrap.min.css" />" rel="stylesheet">
 
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <link href="<c:url value="../../assets/css/ie10-viewport-bug-workaround.css" />" rel="stylesheet">
+    
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]
@@ -61,44 +60,38 @@
                 <li><a href="calendario.html">Calendar</a></li>
               </ul>
               <div id="navbar" class="navbar-collapse collapse">
-				<c:choose>
-			         <c:when test = "${user not null}"> <!-- ERROR: Esto no lo parsea -->
-			            Welcome, <c:out value = "${login}"/> !
+              
+			      <c:choose>
+			         <c:when test = "${user == null}">
+			            Welcome, guest!	
+			            
+			            <div>
+						  <form class="navbar-form navbar-right" action="/login" method="post">
+				            <div class="form-group">
+				              <input type="text" placeholder="Email" name="username" class="form-control">
+				            </div>
+				            <div class="form-group">
+				              <input type="password" placeholder="Password" name="password" class="form-control">
+				            </div>
+				            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+				            <button type="submit" class="btn btn-success">Sign in</button>
+				          </form>
+				        </div><!--/.navbar-collapse -->		            
 			         </c:when>
-			   
+			         
 			         <c:otherwise>
-			            Welcome, guest!
+			   			<p>Welcome, <c:out value = "${user.login}"/> !</p>	
+			   			
+			   			<div>
+						  <form class="navbar-form navbar-right" action="/logout" method="post">
+						  <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+				            <button type="submit" class="btn btn-success">Log out</button>
+				          </form>
+				        </div><!--/.navbar-collapse -->		            
 			         </c:otherwise>
 		    	</c:choose>
 	
-		<div>
-		<p>Tu usuario es : <sec:authentication property="principal.username" />
-		  <form class="navbar-form navbar-right" action="/login" method="post">
-            <div class="form-group">
-              <input type="text" placeholder="Email" name="username" class="form-control">
-            </div>
-            <div class="form-group">
-              <input type="password" placeholder="Password" name="password" class="form-control">
-            </div>
-            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-            <button type="submit" class="btn btn-success">Sign in</button>
-          </form>
-            
-            <!--  ATENCIÓN
-            ATENCIÓN
-            ATENCIÓN
-            ATENCIÓN
-            ATENCIÓN
-            Es probable que esto quede feo y/o deforme el cuadro.
-            Habrá que encontrarle un lugar apropiado
-            ATENCIÓN
-            ATENCIÓN
-            ATENCIÓN
-            ATENCIÓN
-            ATENCIÓN
-            ATENCIÓN
-            ATENCIÓN-->
-        </div><!--/.navbar-collapse -->
+
             </div>
           </div>
         </nav>

@@ -93,14 +93,4 @@ public class RootController {
 		return "upload";
 	}
 	
-	
-	//Esto está mal, pero no recuerdo cómo era
-	//Se supone que es para el manejo de sesión con distintos perfiles
-	//También hace falta un "logout" para borrar el perfil actual
-	/*
-	public String login (HttpSession session) {
-		session.setAttribute("user", "user");
-		
-		return "login";
-	}*/
 }
