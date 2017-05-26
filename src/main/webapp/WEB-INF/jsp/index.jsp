@@ -52,12 +52,12 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="index.html">GameBook</a>
+              <a class="navbar-brand" href="index">GameBook</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
-                <li><a href="clans.html">Clans</a></li>
-                <li><a href="calendario.html">Calendar</a></li>
+                <li><a href="clans">Clans</a></li>
+                <li><a href="calendario">Calendar</a></li>
               </ul>
               <div id="navbar" class="navbar-collapse collapse">
               
@@ -82,6 +82,8 @@
 			         <c:otherwise>
 			   			<p>Welcome, <c:out value = "${user.login}"/> !</p>	
 			   			
+			   			
+		
 			   			<div>
 						  <form class="navbar-form navbar-right" action="/logout" method="post">
 						  <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
@@ -150,6 +152,10 @@
         <span class="sr-only">Next</span>
       </a>
     </div><!-- /.carousel -->
+
+	<div>
+		${steamInfo}
+	</div>
 
 
     <!-- Marketing messaging and featurettes

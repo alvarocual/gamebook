@@ -14,6 +14,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
+import com.github.koraktor.steamcondenser.exceptions.SteamCondenserException;
+import com.github.koraktor.steamcondenser.steam.community.GameStats;
+import com.github.koraktor.steamcondenser.steam.community.SteamId;
+
 import es.ucm.fdi.iw.model.User;
 
 @Controller	
@@ -43,6 +47,21 @@ public class RootController {
 		} else {
 			log.info("Anonimo nos visita");
 		}
+		
+		
+		String info = null;
+		try {
+			SteamId id = SteamId.create("demomenz");
+			GameStats stats = id.getGameStats("tf2");
+			info = "" + stats.getAchievements();
+		} catch (SteamCondenserException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		model.addAttribute("steamInfo", info);
+		
+		
+		
 		// org.springframework.security.core.userdetails.User
 		return "index";
 	}
