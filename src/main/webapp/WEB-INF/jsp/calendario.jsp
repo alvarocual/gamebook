@@ -9,7 +9,7 @@
 <link href="<c:url value="${s}/css/fullcalendar.min.css" />" rel="stylesheet" />
 <link href="<c:url value="${s}/css/fullcalendar.print.min.css" />" rel="stylesheet" media="print" />
 <script src="<c:url value="${s}/js/moment.min.js"/>"></script>
-<script src="<c:url value="${s}/js/lib/jquery.min.js"/>"></script>
+<script src="<c:url value="${s}/js/jquery.min.js"/>"></script>
 <script src="<c:url value="${s}/js/fullcalendar.min.js"/>"></script>
 <script>
 
