@@ -19,7 +19,6 @@
     <link href="<c:url value="${s}/css/bootstrap.min.css" />" rel="stylesheet">
 
     
-
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]
     <script src="js/ie-emulation-modes-warning.js"></script>-->
@@ -40,67 +39,7 @@
 <!-- NAVBAR
 ================================================== -->
   <body>
-    <div class="navbar-wrapper">
-      <div class="container">
-
-        <nav class="navbar navbar-inverse navbar-static-top">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              <a class="navbar-brand" href="index">GameBook</a>
-            </div>
-            <div id="navbar" class="navbar-collapse collapse">
-              <ul class="nav navbar-nav">
-                <li><a href="clans">Clans</a></li>
-                <li><a href="calendario">Calendar</a></li>
-              </ul>
-              <div id="navbar" class="navbar-collapse collapse">
-              
-			      <c:choose>
-			         <c:when test = "${user == null}">
-			            Welcome, guest!	
-			            
-			            <div>
-						  <form class="navbar-form navbar-right" action="/login" method="post">
-				            <div class="form-group">
-				              <input type="text" placeholder="Email" name="username" class="form-control">
-				            </div>
-				            <div class="form-group">
-				              <input type="password" placeholder="Password" name="password" class="form-control">
-				            </div>
-				            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-				            <button type="submit" class="btn btn-success">Sign in</button>
-				          </form>
-				        </div><!--/.navbar-collapse -->		            
-			         </c:when>
-			         
-			         <c:otherwise>
-			   			<p>Welcome, <c:out value = "${user.login}"/> !</p>	
-			   			
-			   			
-		
-			   			<div>
-						  <form class="navbar-form navbar-right" action="/logout" method="post">
-						  <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-				            <button type="submit" class="btn btn-success">Log out</button>
-				          </form>
-				        </div><!--/.navbar-collapse -->		            
-			         </c:otherwise>
-		    	</c:choose>
-	
-
-            </div>
-          </div>
-        </nav>
-
-      </div>
-    </div>
-
+    <%@ include file="../jspf/header.jspf" %>
 
     <!-- Carousel
     ================================================== -->
@@ -152,10 +91,6 @@
         <span class="sr-only">Next</span>
       </a>
     </div><!-- /.carousel -->
-
-	<div>
-		${steamInfo}
-	</div>
 
 
     <!-- Marketing messaging and featurettes

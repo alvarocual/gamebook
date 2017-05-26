@@ -5,12 +5,22 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<title>Gamebook-Calendario</title>
+	
+ 	<!-- Bootstrap core CSS -->
+    	<link href="<c:url value="${s}/css/bootstrap.min.css" />" rel="stylesheet">
+    	
+    <!-- Carousel CSS -->
+    	<link href="<c:url value="${s}/css/carousel.css" />" rel="stylesheet">
+    	
+    	
 <meta charset='utf-8' />
 <link href="<c:url value="${s}/css/fullcalendar.min.css" />" rel="stylesheet" />
 <link href="<c:url value="${s}/css/fullcalendar.print.min.css" />" rel="stylesheet" media="print" />
 <script src="<c:url value="${s}/js/moment.min.js"/>"></script>
 <script src="<c:url value="${s}/js/jquery.min.js"/>"></script>
 <script src="<c:url value="${s}/js/fullcalendar.min.js"/>"></script>
+
 <script>
 
 	$(document).ready(function() {
@@ -98,12 +108,14 @@
 	#calendar {
 		max-width: 900px;
 		margin: 0 auto;
+		margin-top: 150px;
 	}
 
 </style>
+<%@ include file="../jspf/header.jspf" %>
 </head>
-<body>
 
+<body>
 	<div id='calendar'></div>
 
 </body>
