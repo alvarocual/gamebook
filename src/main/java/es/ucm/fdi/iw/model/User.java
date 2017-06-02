@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 
 @Entity
@@ -17,6 +18,7 @@ public class User {
 	private int userElo;
 	private List<Game> userGames;
 	private List<Clan> userClans;
+	private List<Event> userEvents;
 	private String roles; // split by , to separate roles
 	
 	
@@ -62,6 +64,33 @@ public class User {
 
 	public void setRoles(String roles) {
 		this.roles = roles;
+	}
+	
+	@ManyToMany(targetEntity=Clan.class)
+	public List<Clan> getClans() {
+		return userClans;
+	}
+	
+	public void setClans(List<Clan> clans) {
+		this.userClans = clans;
+	}
+	
+	@ManyToMany(targetEntity=Game.class)
+	public List<Game> getGames() {
+		return userGames;
+	}
+	
+	public void setGames(List<Game> games) {
+		this.userGames = games;
+	}
+	
+	@ManyToMany(targetEntity=Event.class)
+	public List<Event> getEvents() {
+		return userEvents;
+	}
+	
+	public void setEvents(List<Event> events) {
+		this.userEvents = events;
 	}
 }
 

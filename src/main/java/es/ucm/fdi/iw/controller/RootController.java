@@ -9,14 +9,17 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
+/* API Steam
 import com.github.koraktor.steamcondenser.exceptions.SteamCondenserException;
 import com.github.koraktor.steamcondenser.steam.community.GameStats;
 import com.github.koraktor.steamcondenser.steam.community.SteamId;
+*/
 
 import es.ucm.fdi.iw.model.User;
 
@@ -27,6 +30,9 @@ public class RootController {
 	
 	@Autowired
 	private EntityManager entityManager;
+	
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 	
 	//incluye ${s} en todas las páginas
 	@ModelAttribute
@@ -48,7 +54,7 @@ public class RootController {
 			log.info("Anonimo nos visita");
 		}
 		
-		
+		/* STEAM
 		String info = null;
 		try {
 			SteamId id = SteamId.create("demomenz");
@@ -59,16 +65,11 @@ public class RootController {
 			e.printStackTrace();
 		}
 		model.addAttribute("steamInfo", info);
-		
+		*/
 		
 		
 		// org.springframework.security.core.userdetails.User
 		return "index";
-	}
-	
-	@GetMapping("/otro")
-	String rootOtro() {
-		return "otro";
 	}
 	
 	@GetMapping("/clans")

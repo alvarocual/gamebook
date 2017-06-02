@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 
 @Entity
@@ -50,6 +51,15 @@ public class Event {
 
 	public void setDate(Date date){
 		this.date = date;
+	}
+	
+	@ManyToMany(targetEntity=User.class, mappedBy="login")
+	public List<User> getMembers() {
+		return members;
+	}
+	
+	public void setMembers(List<User> members) {
+		this.members = members;
 	}
 
 }

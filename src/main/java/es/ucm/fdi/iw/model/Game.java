@@ -1,9 +1,14 @@
 package es.ucm.fdi.iw.model;
 
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 
 @Entity
@@ -13,6 +18,8 @@ public class Game {
 	private String gameName;
 	private String gameDescription;
 	private double price;
+	private List<User> gameUsers;
+	private List<Event> gameEvents;
 	
 	
 	@Id
@@ -47,6 +54,24 @@ public class Game {
 
 	public void setPrice(double price){
 		this.price = price;
+	}
+	
+	@ManyToMany(targetEntity=User.class, mappedBy="login")
+	public List<User> getMembers() {
+		return gameUsers;
+	}
+	
+	public void setMembers(List<User> users) {
+		this.gameUsers = users;
+	}
+	
+	@OneToMany(targetEntity=Event.class)
+	@JoinColumn(name="id") // <-- this avoids creating an extra User_Book table
+	public List<Event> getGameEvents() {
+	return gameEvents;
+	}
+	public void setGameEvents(List<Event> gameEvents) {
+	this.gameEvents = gameEvents;
 	}
 }
 

@@ -25,6 +25,8 @@
               
 			      <c:choose>
 			         <c:when test = "${user == null}">
+			         	<p></p>
+			         	<p></p>
 			            Welcome, guest!	
 			            
 			            <div>
@@ -42,13 +44,16 @@
 			         </c:when>
 			         
 			         <c:otherwise>
+			         	<p></p>
+			         	<p></p>
 			   			<p>Welcome, <c:out value = "${user.login}"/> !</p>	
-			   			
 			   			
 			   			<div>
 						  <form class="navbar-form navbar-right" action="/logout" method="post">
 						  <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-				            <button type="submit" class="btn btn-success">Log out</button>
+				            <button type="submit" class="btn btn-danger">Log out</button>
+				           <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+				            <button type="submit" class="btn btn-success">My profile</button>
 				          </form>
 				        </div><!--/.navbar-collapse -->		            
 			         </c:otherwise>

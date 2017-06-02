@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Clan {
@@ -49,5 +50,13 @@ public class Clan {
 	public void setClanELO(int elo){
 		this.clanELO = elo;
 	}
-
+	
+	@ManyToMany(targetEntity=User.class, mappedBy="login")
+	public List<User> getMembers() {
+		return members;
+	}
+	
+	public void setMembers(List<User> members) {
+		this.members = members;
+	}
 }
