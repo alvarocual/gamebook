@@ -56,7 +56,7 @@ public class Game {
 		this.price = price;
 	}
 	
-	@ManyToMany(targetEntity=User.class, mappedBy="login")
+	@ManyToMany(targetEntity=User.class, mappedBy="games")
 	public List<User> getMembers() {
 		return gameUsers;
 	}

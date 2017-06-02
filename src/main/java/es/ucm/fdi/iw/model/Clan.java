@@ -1,11 +1,9 @@
 package es.ucm.fdi.iw.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 
 @Entity
 public class Clan {
@@ -15,7 +13,6 @@ public class Clan {
 	private String clanDescription;
 	private int clanELO;
 	private List<User> members;
- 	
  	
  	@Id
 	@GeneratedValue
@@ -51,12 +48,17 @@ public class Clan {
 		this.clanELO = elo;
 	}
 	
-	@ManyToMany(targetEntity=User.class, mappedBy="login")
+	@ManyToMany(targetEntity=User.class, mappedBy="clans")
 	public List<User> getMembers() {
 		return members;
 	}
 	
 	public void setMembers(List<User> members) {
 		this.members = members;
+	}
+
+	@Transient
+	public int getMemberCount() {
+		return members.size();
 	}
 }
