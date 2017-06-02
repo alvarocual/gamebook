@@ -58,13 +58,17 @@
             <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
           </p>
           <div class="jumbotron">
-            <h1>Name of Clan</h1>
+            <h1>${clan.clanName}</h1>
             <p>This is an example to show the potential of an offcanvas layout pattern in Bootstrap. Try some responsive-range viewport sizes to see it in action.</p>
           </div>
           <div class="row">
             <div class="col-xs-6 col-lg-4">
               <h2>Member list</h2>
-              <p>Aqui lista scroll con los miembros pertenecientes al clan</p>
+              <ul>
+              <c:forEach items="${clan.members}" var="m">
+              <li>${m.login} ${m.userElo}</li>
+              </c:forEach>
+              </ul>
             </div><!--/.col-xs-6.col-lg-4-->
             <div class="col-xs-6 col-lg-4">
               <h2>Next Events of Clan</h2>
