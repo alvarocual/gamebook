@@ -53,7 +53,7 @@ public class Event {
 		this.date = date;
 	}
 	
-	@ManyToMany(targetEntity=User.class, mappedBy="login")
+	@ManyToMany(targetEntity=User.class, mappedBy="events")
 	public List<User> getMembers() {
 		return members;
 	}
