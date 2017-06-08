@@ -14,23 +14,20 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="index">GameBook</a>
+              <a class="navbar-brand" href="../../index">GameBook</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
-                <li><a href="clans">Clans</a></li>
-                <li><a href="calendario">Calendar</a></li>
+                <li><a href="../../clans">Clans</a></li>
+                <li><a href="../../calendario">Calendar</a></li>
               </ul>
               <div id="navbar" class="navbar-collapse collapse">
               
 			      <c:choose>
 			         <c:when test = "${user == null}">
-			         	<p></p>
-			         	<p></p>
-			            Welcome, guest!	
-			            
 			            <div>
 						  <form class="navbar-form navbar-right" action="/login" method="post">
+						  <font color=white><p>Welcome, guest!</p></font>
 				            <div class="form-group">
 				              <input type="text" placeholder="Email" name="username" class="form-control">
 				            </div>
@@ -44,17 +41,12 @@
 			         </c:when>
 			         
 			         <c:otherwise>
-			         	<p></p>
-			         	<p></p>
-			   			<p>Welcome, <c:out value = "${user.login}"/> !</p>	
-			   			
 			   			<div>
 						  <form class="navbar-form navbar-right" action="/logout" method="post">
+						  <font color=white><p>Welcome, <c:out value = "${user.login}"/> !</p></font>
 						  <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 				            <button type="submit" class="btn btn-danger">Log out</button>
-				           <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-				            <button type="submit" class="btn btn-success">My profile</button>
-				          </form>
+				          <a href="viewUser?id=${user.id}" class="btn btn-success">My profile</a>
 				        </div><!--/.navbar-collapse -->		            
 			         </c:otherwise>
 		    	</c:choose>

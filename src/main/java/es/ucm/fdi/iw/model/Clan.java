@@ -1,6 +1,5 @@
 package es.ucm.fdi.iw.model;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
@@ -9,10 +8,12 @@ import javax.persistence.*;
 public class Clan {
 
 	private long id;
-	private String clanName;
 	private String clanDescription;
 	private int clanELO;
+	private String clanName;
+	private String clanGame;
 	private List<User> members;
+	private List<Event> events;
  	
  	@Id
 	@GeneratedValue
@@ -39,6 +40,14 @@ public class Clan {
 	public void setClanDescription(String desc){
 		this.clanDescription = desc;
 	}
+	
+	public String getClanGame(){
+		return this.clanGame;
+	}
+	
+	public void setClanGame(String game){
+		this.clanGame = game;
+	}
 
 	public int getClanELO(){
 		return this.clanELO;
@@ -48,7 +57,7 @@ public class Clan {
 		this.clanELO = elo;
 	}
 	
-	@ManyToMany(targetEntity=User.class, mappedBy="clans")
+	@ManyToMany(targetEntity=User.class)
 	public List<User> getMembers() {
 		return members;
 	}
@@ -56,9 +65,18 @@ public class Clan {
 	public void setMembers(List<User> members) {
 		this.members = members;
 	}
-
+	
 	@Transient
 	public int getMemberCount() {
 		return members.size();
+	}
+	
+	@ManyToMany(targetEntity=Event.class, mappedBy="clans")
+	public List<Event> getEvents() {
+		return events;
+	}
+	
+	public void setEvents(List<Event> events) {
+		this.events = events;
 	}
 }

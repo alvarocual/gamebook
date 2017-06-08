@@ -67,7 +67,7 @@ public class User {
 		this.roles = roles;
 	}
 	
-	@ManyToMany(targetEntity=Clan.class)
+	@ManyToMany(targetEntity=Clan.class, mappedBy="members")
 	public List<Clan> getClans() {
 		return userClans;
 	}

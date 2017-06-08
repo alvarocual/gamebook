@@ -68,10 +68,10 @@ public class Game {
 	@OneToMany(targetEntity=Event.class)
 	@JoinColumn(name="id") // <-- this avoids creating an extra User_Book table
 	public List<Event> getGameEvents() {
-	return gameEvents;
+		return gameEvents;
 	}
 	public void setGameEvents(List<Event> gameEvents) {
-	this.gameEvents = gameEvents;
+		this.gameEvents = gameEvents;
 	}
 }
 

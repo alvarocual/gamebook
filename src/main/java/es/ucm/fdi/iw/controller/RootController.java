@@ -1,6 +1,7 @@
 package es.ucm.fdi.iw.controller;
 
 import java.security.Principal;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.servlet.http.HttpSession;
@@ -11,9 +12,14 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import es.ucm.fdi.iw.model.Clan;
+import es.ucm.fdi.iw.model.Event;
 
 /* API Steam
 import com.github.koraktor.steamcondenser.exceptions.SteamCondenserException;
@@ -73,19 +79,53 @@ public class RootController {
 	}
 	
 	@GetMapping("/clans")
-	String rootClans() {
-		return "clans";
+	@Transactional
+	String rootClans(Model m) {
+		List<Clan> clans = (List<Clan>)entityManager.createQuery("select c from Clan c").getResultList();
+        for (Clan c : clans) {
+            log.info("clan " + c.getClanName() + " " + c.getClanGame() + " " + c.getMembers().size());
+        }
+        m.addAttribute("clans", clans);
+        return "clans";
 	}
+	
+	@GetMapping("viewClan")
+    @Transactional
+    public String testViewClan(@RequestParam long id, Model m) {
+        m.addAttribute("clan", entityManager.find(Clan.class, id));
+        return "vclan";
+    }
 	
 	@GetMapping("/vclan")
 	String rootVClan() {
 		return "vclan";
 	}
 	
+	//Función para devolver la vista de un perfil de usuario concreto WIP
+	@GetMapping("viewUser")
+    @Transactional
+    public String profileView(@RequestParam long id, Model m) {
+        m.addAttribute("user", entityManager.find(User.class, id));
+        return "vuser";
+    }
+	
 	@GetMapping("/vuser")
-	String rootVUser() {
+	@Transactional
+	String rootVUser(Model m) {
+		List<Event> events = (List<Event>)entityManager.createQuery("select c from Event c").getResultList();
+        for (Event c : events) {
+            log.info("event " + c.getEventName() + " " + c.getEventGame() + " " + c.getMembers().size());
+        }
+        m.addAttribute("events", events);
 		return "vuser";
 	}
+	
+	@GetMapping("viewEvent")
+    @Transactional
+    public String testViewEvent(@RequestParam long id, Model m) {
+        m.addAttribute("event", entityManager.find(Event.class, id));
+        return "vevent";
+    }
 	
 	@GetMapping("/calendario")
 	String rootCalendar() {

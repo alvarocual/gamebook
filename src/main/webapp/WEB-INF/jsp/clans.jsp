@@ -42,29 +42,23 @@
   <body>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
-          <div class="row placeholders">
-            
-          </div>
-
           <h2 class="sub-header">List of top 15 Clans</h2>
           <div class="table-responsive">
             <table class="table table-striped">
               <thead>
                 <tr>
-                  <th>Rank</th>
                   <th>Game</th>
                   <th>Clan's name</th>
-                  <th>N� Members</th>
+                  <th>Number of Members</th>
                   <th>Join Request</th>
                 </tr>
               </thead>
               <tbody>
                 <c:forEach items="${clans}" var="c" >
                 <tr>
-                  <td>x</td>
-                  <td>dolor</td>
-                  <td><a href="view?id=${c.id}">${c.clanName}</a></td>
-                  <td>${c.memberCount}ipsum</td>
+                  <td>${c.clanName}</td>
+                  <td><a href="viewClan?id=${c.id}">${c.clanGame}</a></td> 	<!-- ESTO ES UNA TIRITA. REVISARLO -->
+                  <td>${c.memberCount}</td>
                   <td>sit</td>
                 </tr>
                 </c:forEach>
@@ -72,8 +66,6 @@
             </table>
           </div>
         </div>
-      </div>
-    </div>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->

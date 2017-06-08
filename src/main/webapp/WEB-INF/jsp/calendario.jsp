@@ -48,7 +48,7 @@
 				{
 					id: 999,
 					title: 'Repeating Event',
-					start: '2017-04-09T16:00:00'
+					start: '2017-04-09 16:00:00'
 				},
 				{
 					id: 999,

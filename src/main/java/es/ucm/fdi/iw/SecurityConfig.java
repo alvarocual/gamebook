@@ -20,9 +20,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
         		.antMatchers(
-        				"/static/**", "/clans/**", "/calendario", 
-        				"/logout", "/403"
+        				"/static/**", "/clans", "/calendario", "/viewEvent**",
+        				"/viewClan**","/logout", "/403"
         		).permitAll()
+        		.mvcMatchers("/vuser").hasRole("USER")
+        		.antMatchers("/vuser/**").hasRole("USER")
 				.mvcMatchers("/admin").hasRole("ADMIN")
         		.antMatchers("/admin/**").hasRole("ADMIN")
 				.anyRequest().authenticated()

@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 
 @Entity
@@ -15,8 +16,11 @@ public class Event {
 	private long id;
 	private String eventName;
 	private String eventDescription;
-	private Date date;
+	private String ini;
+	private String fin;
+	private Game eventGame;
 	private List<User> members;
+	private List<Clan> clans;
 	
 	
 	@Id
@@ -45,12 +49,29 @@ public class Event {
 		this.eventDescription = desc;
 	}
 	
-	public Date date(){
-		return this.date;
+	public String getIni(){
+		return this.ini;
 	}
 
-	public void setDate(Date date){
-		this.date = date;
+	public void setIni(String ini){
+		this.ini = ini;
+	}
+	
+	public String getFin(){
+		return this.fin;
+	}
+
+	public void setFin(String fin){
+		this.fin = fin;
+	}
+	
+	@ManyToOne(targetEntity=Game.class)
+	public Game getEventGame() {
+		return eventGame;
+	}
+	
+	public void setEventGame(Game eventGame) {
+		this.eventGame = eventGame;
 	}
 	
 	@ManyToMany(targetEntity=User.class, mappedBy="events")
@@ -61,5 +82,15 @@ public class Event {
 	public void setMembers(List<User> members) {
 		this.members = members;
 	}
+	
+	@ManyToMany(targetEntity=Clan.class)
+	public List<Clan> getClans() {
+		return clans;
+	}
+	
+	public void setClans(List<Clan> clans) {
+		this.clans = clans;
+	}
+	
 
 }
