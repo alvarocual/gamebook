@@ -41,7 +41,9 @@ public class RootController {
 	
 	@Autowired
 	private PasswordEncoder passwordEncoder;
-	
+	// ejemplo de uso: https://github.com/manuel-freire/iw-base/blob/master/src/main/java/es/ucm/fdi/iw/controller/AdminController.java#L62
+
+
 	//incluye ${s} en todas las páginas
 	@ModelAttribute
 	public void addAttributes(Model m) {
@@ -135,7 +137,11 @@ public class RootController {
     }
 	
 	@GetMapping("/calendario")
-	String rootCalendar() {
+	String rootCalendar(Model m) {
+		List<Event> events = (List<Event>)entityManager.createQuery("select c from Event c").getResultList();
+		StringBuilder jsonEvents = new StringBuilder("[");
+		for (Event e : events) jsonEvents.append(e.getJson() + ",");
+		m.addAttribute("events", jsonEvents.append("]").toString());
 		return "calendario";
 	}
 	
