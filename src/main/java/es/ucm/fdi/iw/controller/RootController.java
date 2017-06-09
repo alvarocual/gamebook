@@ -1,7 +1,9 @@
 package es.ucm.fdi.iw.controller;
 
 import java.security.Principal;
+import java.util.Comparator;
 import java.util.List;
+import java.util.TreeSet;
 
 import javax.persistence.EntityManager;
 import javax.servlet.http.HttpSession;
@@ -39,7 +41,9 @@ public class RootController {
 	
 	@Autowired
 	private PasswordEncoder passwordEncoder;
-	
+	// ejemplo de uso: https://github.com/manuel-freire/iw-base/blob/master/src/main/java/es/ucm/fdi/iw/controller/AdminController.java#L62
+
+
 	//incluye ${s} en todas las páginas
 	@ModelAttribute
 	public void addAttributes(Model m) {
@@ -82,10 +86,15 @@ public class RootController {
 	@Transactional
 	String rootClans(Model m) {
 		List<Clan> clans = (List<Clan>)entityManager.createQuery("select c from Clan c").getResultList();
-        for (Clan c : clans) {
-            log.info("clan " + c.getClanName() + " " + c.getClanGame() + " " + c.getMembers().size());
-        }
-        m.addAttribute("clans", clans);
+		TreeSet<Clan> byElo = new TreeSet<>(new Comparator<Clan>() {
+			@Override
+			public int compare(Clan o1, Clan o2) {
+				int d = o2.getClanELO() - o1.getClanELO();
+				return (d == 0) ? (int)(o1.getId() - o2.getId()) : d;
+			}
+		});
+		byElo.addAll(clans);
+        m.addAttribute("clans", byElo);
         return "clans";
 	}
 	
@@ -128,7 +137,11 @@ public class RootController {
     }
 	
 	@GetMapping("/calendario")
-	String rootCalendar() {
+	String rootCalendar(Model m) {
+		List<Event> events = (List<Event>)entityManager.createQuery("select c from Event c").getResultList();
+		StringBuilder jsonEvents = new StringBuilder("[");
+		for (Event e : events) jsonEvents.append(e.getJson() + ",");
+		m.addAttribute("events", jsonEvents.append("]").toString());
 		return "calendario";
 	}
 	

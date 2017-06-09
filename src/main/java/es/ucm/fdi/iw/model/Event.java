@@ -3,11 +3,7 @@ package es.ucm.fdi.iw.model;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 
 @Entity
@@ -92,5 +88,12 @@ public class Event {
 		this.clans = clans;
 	}
 	
-
+	@Transient
+	public String getJson() {
+		return "{ title: \"" + getEventName() + "\"" // <-- fixme inyeccion de JS!
+				+ ",\n\t start: \"" + getIni()
+				+ "\",\n\t end: \"" + getFin()
+				+ "\",\n\t url: \"" + "????" // <-- fixme
+				+ "}\n";
+	}
 }
