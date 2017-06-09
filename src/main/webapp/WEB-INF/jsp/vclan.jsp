@@ -17,18 +17,11 @@
     <!-- Bootstrap core CSS -->
     <link href="<c:url value="${s}/css/bootstrap.min.css" />" rel="stylesheet">
 
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-
     <!-- Custom styles for this template -->
     <link href="<c:url value="${s}/vclan.css" />" rel="stylesheet">
     
     <!-- Carousel CSS -->
     <link href="<c:url value="${s}/css/carousel.css" />" rel="stylesheet">
-
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="js/ie-emulation-modes-warning.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -122,8 +115,6 @@
     <script src="<c:url value="${s}/js/jquery.min.js"/>"></script>
     <script src="<c:url value="${s}/js/bootstrap.min.js"/>"></script>
     <script src="<c:url value="${s}/js/holder.min.js"/>"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
     <script src="offcanvas.js"></script>
   </body>
 </html>

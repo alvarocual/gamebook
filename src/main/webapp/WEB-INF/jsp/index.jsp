@@ -18,11 +18,6 @@
     <!-- Bootstrap core CSS -->
     <link href="<c:url value="${s}/css/bootstrap.min.css" />" rel="stylesheet">
 
-    
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]
-    <script src="js/ie-emulation-modes-warning.js"></script>-->
-
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -115,9 +110,5 @@
     <script src="<c:url value="${s}/js/jquery.min.js"/>"></script>
     <script src="<c:url value="${s}/js/bootstrap.min.js"/>"></script>
     <script src="<c:url value="${s}/js/holder.min.js"/>"></script>
-    <!-- Just to make our placeholder images work. Don't actually copy the next line! 
-    <script src="../../assets/js/vendor/holder.min.js"></script>
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
-    -->
   </body>
 </html>
