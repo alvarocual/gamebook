@@ -4,6 +4,8 @@
 
 /* Move down content because we have a fixed navbar that is 50px tall */
 body {
+  padding-left: 35px;
+  padding-right: 35px;
   padding-top: 50px;
 }
 

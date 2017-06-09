@@ -59,8 +59,7 @@
           
           <div class="row">
 	          <div class="col-xs-6 col-lg-4">
-		          <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-		            
+		          
 		            	<h2 class="sub-header">Games</h2>
 		            	<div class="table-responsive">
 				            <table class="table table-striped">
@@ -80,7 +79,6 @@
 				              </tbody>
 				            </table>
 			            </div>
-		            </div>
 	            </div><!--/.col-xs-6.col-lg-4-->
             
             <div class="col-xs-6 col-lg-4">
@@ -91,8 +89,8 @@
 		                <tr>
 		                  <th>Name</th>
 		                  <th>Game</th>
-		                  <th>Number of members</th>
-		                  <th>Leave clan</th>
+		                  <th>Members</th>
+		                  <th>Leave</th>
 		                </tr>
 		              </thead>
 		              <tbody>

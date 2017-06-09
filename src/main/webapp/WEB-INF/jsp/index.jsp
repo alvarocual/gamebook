@@ -55,9 +55,9 @@
           <img class="first-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="First slide">
           <div class="container">
             <div class="carousel-caption">
-              <h1>Join clans now and play!</h1>
-              <p>You just have to sign up to send your join request to any open clan and play. Or you may like to open yours!</p>
-              <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
+              <h1>Join us! We have cookies</h1>
+              <p>Create your user profile and unlock a lot of advantages</p>
+              <p><a class="btn btn-lg btn-primary" href="#" role="button">Register</a></p>
             </div>
           </div>
         </div>
@@ -65,9 +65,9 @@
           <img class="second-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Second slide">
           <div class="container">
             <div class="carousel-caption">
-              <h1>No just clans</h1>
-              <p>Join clans is only the begining: you can also chat with your clans-mates, link tutorials or YouTube videos, share on your RRSS...</p>
-              <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
+              <h1>Create new clan</h1>
+              <p>Join your friends and mates to conquer game's rankings</p>
+              <p><a class="btn btn-lg btn-primary" href="#" role="button">Create clan</a></p>
             </div>
           </div>
         </div>
@@ -75,9 +75,9 @@
           <img class="third-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Third slide">
           <div class="container">
             <div class="carousel-caption">
-              <h1>Take a look.</h1>
-              <p>On our gallery you can see those features yourself! click the button right down and see some captures of what you could do once you are in!</p>
-              <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
+              <h1>Create new event</h1>
+              <p>Gather allies and foes in a epic battle</p>
+              <p><a class="btn btn-lg btn-primary" href="#" role="button">Create event</a></p>
             </div>
           </div>
         </div>

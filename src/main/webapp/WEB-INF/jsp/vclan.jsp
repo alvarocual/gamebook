@@ -43,46 +43,39 @@
     <div class="container">
 
       <div class="row row-offcanvas row-offcanvas-right">
-
-        <div class="col-xs-12 col-sm-9">
           <p class="pull-right visible-xs">
             <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
           </p>
           <div class="jumbotron">
           <div class="row">
-	          	<div class="col-xs-6 col-lg-4">
-	          		<h2>Game:</h2>
-	          		<p>${clan.clanName}</p>
-	          	</div>
-	          	<div class="col-xs-6 col-lg-4">
-	          		<h1>${clan.clanGame}</h1>
-	            	<p>${clan.clanDescription}</p>
-	          	</div>
+          	 <div class="col-xs-6 col-lg-4">
+	          	<h1>${clan.clanGame}</h1>
+	         </div>
+	         <div class="col-xs-6 col-lg-4"> 	
+	          	<h3>Game: ${clan.clanName}</h3>
+	          	<p>${clan.clanDescription}</p>
+	         </div>
           	</div>
-            
           </div>
           
           <div class="row">
 	          <div class="col-xs-6 col-lg-4">
-		          <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-		            
-		            	<h2 class="sub-header">Member list</h2>
-		            	<div class="table-responsive">
-				            <table class="table table-striped">
-				              <thead>
-				                <tr>
-				                  <th>Name</th>
-				                </tr>
-				              </thead>
-				              <tbody>
-				                <c:forEach items="${clan.members}" var="m">
-				                <tr>
-				                  <td> ${m.login}</td>
-				                </tr>
-				                </c:forEach>
-				              </tbody>
-				            </table>
-			            </div>
+	            	<h2 class="sub-header">Member list</h2>
+	            	<div class="table-responsive">
+			            <table class="table table-striped">
+			              <thead>
+			                <tr>
+			                  <th>Name</th>
+			                </tr>
+			              </thead>
+			              <tbody>
+			                <c:forEach items="${clan.members}" var="m">
+			                <tr>
+			                  <td> ${m.login}</td>
+			                </tr>
+			                </c:forEach>
+			              </tbody>
+			            </table>
 		            </div>
 	            </div><!--/.col-xs-6.col-lg-4-->
             
@@ -94,6 +87,7 @@
 		                <tr>
 		                  <th>Name</th>
 		                  <th>Description</th>
+		                  <th>Game</th>
 		                </tr>
 		              </thead>
 		              <tbody>
@@ -101,6 +95,7 @@
 		                <tr>
 		                  <td> <a href="viewEvent?id=${e.id}">${e.eventDescription}</a></td>
 		                  <td> ${e.eventName}</td>
+		                  <td> ${e.eventGame.gameName}</td>
 		                </tr>
 		                </c:forEach>
 		              </tbody>
@@ -108,7 +103,6 @@
 	            </div>         
 	      	</div><!--/.col-xs-6.col-lg-4-->
           </div><!--/row-->
-        </div><!--/.col-xs-12.col-sm-9-->
 
         
       </div><!--/row-->

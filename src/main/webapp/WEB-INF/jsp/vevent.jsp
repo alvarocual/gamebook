@@ -23,6 +23,9 @@
     <!-- Custom styles for this template -->
     <link href="<c:url value="${s}/vevent.css" />" rel="stylesheet">
 
+	<!-- Carousel CSS -->
+    <link href="<c:url value="${s}/css/carousel.css" />" rel="stylesheet">
+
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="js/ie-emulation-modes-warning.js"></script>
@@ -35,50 +38,72 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-fixed-top navbar-inverse">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="index.html">GameBook</a>
-        </div>
-      </div><!-- /.container -->
-    </nav><!-- /.navbar -->
+    <%@ include file="../jspf/header.jspf" %>
 
     <div class="container">
 
       <div class="row row-offcanvas row-offcanvas-right">
 
-        <div class="col-xs-12 col-sm-9">
           <p class="pull-right visible-xs">
             <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
           </p>
           <div class="jumbotron">
-            <h1>Name of Event</h1>
-            <h3>Creator of the event</h3>
-            <h4>Date: xx/xx/xx</h4>
-            <p>This is an example to show the potential of an offcanvas layout pattern in Bootstrap. Try some responsive-range viewport sizes to see it in action.</p>
+            <h1>${event.eventName}</h1>
+            <h3>${event.eventDescription}</h3>
+            <h3>${event.eventGame.gameName}</h3>
+            <h4>Fecha inicio: ${event.ini} / Fecha fin: ${event.fin}</h4>
           </div>
+          
           <div class="row">
             <div class="col-xs-6 col-lg-4">
-              <h2>Players that already joined</h2>
-              <p>Aqui lista scroll con los miembros pertenecientes al evento</p>
-            </div><!--/.col-xs-6.col-lg-4-->
+		        <h2 class="sub-header">Clan List</h2>
+		        <div class="table-responsive">
+				        <table class="table table-striped">
+				            <thead>
+				                <tr>
+				                  <th>Name</th>
+				                  <th>Game</th>
+				                  <th>Descripcion</th>
+				                  <th>Members</th>
+				                </tr>
+				            </thead>
+				            <tbody>
+				                <c:forEach items="${event.clans}" var="c" >
+				                <tr>
+				                  <td><a href="viewClan?id=${c.id}">${c.clanGame}</a></td> <!-- ESTO ES UNA TIRITA. REVISARLO -->
+				                  <td> ${c.clanName}</td>
+				                  <td> ${c.clanDescription}</td>
+				                  <td> ${c.memberCount}</td>
+				                </tr>
+				                </c:forEach>
+				            </tbody>
+				        </table>
+			        </div>
+            </div><!--/.col-xs-6.col-lg-4--> 
+            
             <div class="col-xs-6 col-lg-4">
-            </div><!--/.col-xs-6.col-lg-4-->
+              <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+		            
+		        <h2 class="sub-header">Member List</h2>
+		        <div class="table-responsive">
+				        <table class="table table-striped">
+				            <thead>
+				                <tr>
+				                  <th>Name</th>
+				                </tr>
+				            </thead>
+				            <tbody>
+				                <c:forEach items="${event.members}" var="c" >
+				                <tr>
+				                  <td> ${c.login}</td>
+				                </tr>
+				                </c:forEach>
+				            </tbody>
+				        </table>
+			        </div>
+		        </div>
+            </div><!--/.col-xs-6.col-lg-4--> 
           </div><!--/row-->
-        </div><!--/.col-xs-12.col-sm-9-->
-
-        <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
-          <div class="list-group">
-          <p> Chat of event</p>  
-          </div>
-        </div><!--/.sidebar-offcanvas-->
-      </div><!--/row-->
 
       <hr>
 
