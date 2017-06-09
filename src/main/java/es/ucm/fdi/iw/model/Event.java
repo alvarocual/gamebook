@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import org.apache.commons.lang3.StringEscapeUtils;
+
 
 @Entity
 public class Event {
@@ -17,7 +19,6 @@ public class Event {
 	private Game eventGame;
 	private List<User> members;
 	private List<Clan> clans;
-	
 	
 	@Id
 	@GeneratedValue
@@ -88,12 +89,16 @@ public class Event {
 		this.clans = clans;
 	}
 	
+	
+	//La función escapeEcmaScript sirve para escapar los caracteres del
+	//nombre, la fecha de inicio y la fecha de fin de los eventos.
+	//De esta forma evitamos vulnerabilidades por inyección de JS.
 	@Transient
 	public String getJson() {
-		return "{ title: \"" + getEventName() + "\"" // <-- fixme inyeccion de JS!
-				+ ",\n\t start: \"" + getIni()
-				+ "\",\n\t end: \"" + getFin()
-				+ "\",\n\t url: \"" + "????" // <-- fixme
-				+ "}\n";
+		return "{ title: \"" + StringEscapeUtils.escapeEcmaScript(getEventName()) + "\""
+				+ ",\n\t start: \"" + StringEscapeUtils.escapeEcmaScript(getIni())
+				+ "\",\n\t end: \"" + StringEscapeUtils.escapeEcmaScript(getFin())
+				+ "\",\n\t url: \"" + "/viewEvent?id=" + getId()
+				+ "\"}\n";
 	}
 }

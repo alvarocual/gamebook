@@ -17,20 +17,9 @@
     <!-- Bootstrap core CSS -->
     <link href="<c:url value="${s}/css/bootstrap.min.css" />" rel="stylesheet">
 
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <link href="<c:url value="../../assets/css/ie10-viewport-bug-workaround.css" />" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="<c:url value="${s}/vevent.css" />" rel="stylesheet">
-
 	<!-- Carousel CSS -->
     <link href="<c:url value="${s}/css/carousel.css" />" rel="stylesheet">
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    
   </head>
 
   <body>
@@ -59,15 +48,15 @@
 				                <tr>
 				                  <th>Name</th>
 				                  <th>Game</th>
-				                  <th>Descripcion</th>
+				                  <th>Description</th>
 				                  <th>Members</th>
 				                </tr>
 				            </thead>
 				            <tbody>
 				                <c:forEach items="${event.clans}" var="c" >
 				                <tr>
-				                  <td><a href="viewClan?id=${c.id}">${c.clanGame}</a></td> <!-- ESTO ES UNA TIRITA. REVISARLO -->
-				                  <td> ${c.clanName}</td>
+				                  <td><a href="viewClan?id=${c.id}">${c.clanName}</a></td>
+				                  <td> ${c.clanGame}</td>
 				                  <td> ${c.clanDescription}</td>
 				                  <td> ${c.memberCount}</td>
 				                </tr>
@@ -100,6 +89,7 @@
 		        </div>
             </div><!--/.col-xs-6.col-lg-4--> 
           </div><!--/row-->
+      </div>
 
       <hr>
 
@@ -116,6 +106,5 @@
     <script src="<c:url value="${s}/js/jquery.min.js"/>"></script>
     <script src="<c:url value="${s}/js/bootstrap.min.js"/>"></script>
     <script src="<c:url value="${s}/js/holder.min.js"/>"></script>
-    <script src="offcanvas.js"></script>
   </body>
 </html>

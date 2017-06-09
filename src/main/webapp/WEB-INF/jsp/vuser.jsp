@@ -16,18 +16,10 @@
 
     <!-- Bootstrap core CSS -->
     <link href="<c:url value="${s}/css/bootstrap.min.css" />" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="<c:url value="${s}/vuser.css" />" rel="stylesheet">
     
      <!-- Carousel CSS -->
     <link href="<c:url value="${s}/css/carousel.css" />" rel="stylesheet">
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
   </head>
 
   <body>
@@ -59,7 +51,8 @@
 				              <thead>
 				                <tr>
 				                  <th>Name</th>
-				                  <th>Descripcion</th>
+				                  <th>Description</th>
+				                  <th>Price</th>
 				                </tr>
 				              </thead>
 				              <tbody>
@@ -67,6 +60,7 @@
 				                <tr>
 				                  <td> ${c.gameName}</td>
 				                  <td> ${c.gameDescription}</td>
+				                  <td> ${c.price}</td>
 				                </tr>
 				                </c:forEach>
 				              </tbody>
@@ -89,8 +83,8 @@
 		              <tbody>
 		                <c:forEach items="${user.clans}" var="c" >
 		                <tr>
-		                  <td><a href="viewClan?id=${c.id}">${c.clanGame}</a></td> <!-- ESTO ES UNA TIRITA. REVISARLO -->
-		                  <td> ${c.clanName}</td>
+		                  <td><a href="viewClan?id=${c.id}">${c.clanName}</a></td>
+		                  <td> ${c.clanGame}</td>
 		                  <td> ${c.memberCount}</td>
 		                  <td> sit </td>
 		                </tr>
@@ -118,7 +112,7 @@
 	              <tbody>
 		                <c:forEach items="${user.events}" var="e" >
 		                <tr>
-		                  <td><a href="/viewEvent?id=${e.id}">${e.eventName}</a></td> <!-- ESTO ES UNA TIRITA. REVISARLO -->
+		                  <td><a href="/viewEvent?id=${e.id}">${e.eventName}</a></td>
 		                  <td> ${e.eventGame.gameName}</td>
 		                  <td> ${e.eventDescription}</td>
 		                  <td> sit</td>
@@ -147,6 +141,5 @@
     <script src="<c:url value="${s}/js/jquery.min.js"/>"></script>
     <script src="<c:url value="${s}/js/bootstrap.min.js"/>"></script>
     <script src="<c:url value="${s}/js/holder.min.js"/>"></script>
-    <script src="offcanvas.js"></script>
   </body>
 </html>

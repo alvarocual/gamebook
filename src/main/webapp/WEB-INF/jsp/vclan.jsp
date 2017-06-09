@@ -16,18 +16,10 @@
 
     <!-- Bootstrap core CSS -->
     <link href="<c:url value="${s}/css/bootstrap.min.css" />" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="<c:url value="${s}/vclan.css" />" rel="stylesheet">
     
     <!-- Carousel CSS -->
     <link href="<c:url value="${s}/css/carousel.css" />" rel="stylesheet">
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
   </head>
 
   <body>
@@ -42,10 +34,10 @@
           <div class="jumbotron">
           <div class="row">
           	 <div class="col-xs-6 col-lg-4">
-	          	<h1>${clan.clanGame}</h1>
+	          	<h1>${clan.clanName}</h1>
 	         </div>
 	         <div class="col-xs-6 col-lg-4"> 	
-	          	<h3>Game: ${clan.clanName}</h3>
+	          	<h3>Game: ${clan.clanGame}</h3>
 	          	<p>${clan.clanDescription}</p>
 	         </div>
           	</div>
@@ -86,8 +78,8 @@
 		              <tbody>
 		                <c:forEach items="${clan.events}" var="e">
 		                <tr>
-		                  <td> <a href="viewEvent?id=${e.id}">${e.eventDescription}</a></td>
-		                  <td> ${e.eventName}</td>
+		                  <td> <a href="viewEvent?id=${e.id}">${e.eventName}</a></td>
+		                  <td> ${e.eventDescription}</td>
 		                  <td> ${e.eventGame.gameName}</td>
 		                </tr>
 		                </c:forEach>
@@ -115,6 +107,5 @@
     <script src="<c:url value="${s}/js/jquery.min.js"/>"></script>
     <script src="<c:url value="${s}/js/bootstrap.min.js"/>"></script>
     <script src="<c:url value="${s}/js/holder.min.js"/>"></script>
-    <script src="offcanvas.js"></script>
   </body>
 </html>

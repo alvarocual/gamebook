@@ -43,15 +43,16 @@
 			         <c:otherwise>
 			   			<div>
 						  <form class="navbar-form navbar-right" action="/logout" method="post">
-						  <font color=white><p>Welcome, <c:out value = "${user.login}"/> !</p></font>
+						  <font color=white> <p>Welcome, <c:out value = "${user.login}"/> !</p></font>
 						  <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 				            <button type="submit" class="btn btn-danger">Log out</button>
 				          <a href="viewUser?id=${user.id}" class="btn btn-success">My profile</a>
+				          <a href="../../admin" class="btn btn-info">Admin</a>
+				          </form>
 				        </div><!--/.navbar-collapse -->		            
 			         </c:otherwise>
 		    	</c:choose>
 	
-
               </div>
             </div>
           </div>

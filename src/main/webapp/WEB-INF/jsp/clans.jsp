@@ -22,16 +22,11 @@
     
     <!-- Carousel CSS -->
     <link href="<c:url value="${s}/css/carousel.css" />" rel="stylesheet">
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    <%@ include file="../jspf/header.jspf" %>
+    
   </head>
 
   <body>
+        <%@ include file="../jspf/header.jspf" %>
         
           <h2 class="sub-header">List 15 Clans</h2>
           <div class="table-responsive">
@@ -47,8 +42,8 @@
               <tbody>
                 <c:forEach items="${clans}" var="c" >
                 <tr>
-                  <td><a href="viewClan?id=${c.id}">${c.clanGame}</a></td> 	<!-- ESTO ES UNA TIRITA. REVISARLO -->
-                  <td>${c.clanName}</td>
+                  <td><a href="viewClan?id=${c.id}">${c.clanName}</a></td>
+                  <td>${c.clanGame}</td>
                   <td>${c.memberCount}</td>
                   <td>sit</td>
                 </tr>

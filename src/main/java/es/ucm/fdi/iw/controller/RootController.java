@@ -63,21 +63,7 @@ public class RootController {
 		} else {
 			log.info("Anonimo nos visita");
 		}
-		
-		/* STEAM
-		String info = null;
-		try {
-			SteamId id = SteamId.create("demomenz");
-			GameStats stats = id.getGameStats("tf2");
-			info = "" + stats.getAchievements();
-		} catch (SteamCondenserException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		model.addAttribute("steamInfo", info);
-		*/
-		
-		
+				
 		// org.springframework.security.core.userdetails.User
 		return "index";
 	}
@@ -121,11 +107,6 @@ public class RootController {
 	@GetMapping("/vuser")
 	@Transactional
 	String rootVUser(Model m) {
-		List<Event> events = (List<Event>)entityManager.createQuery("select c from Event c").getResultList();
-        for (Event c : events) {
-            log.info("event " + c.getEventName() + " " + c.getEventGame() + " " + c.getMembers().size());
-        }
-        m.addAttribute("events", events);
 		return "vuser";
 	}
 	
@@ -151,7 +132,27 @@ public class RootController {
 	}
 	
 	@GetMapping("/admin")
-	String rootAdmin() {
+	String rootAdmin(Model m) {
+		//Users
+		List<User> users = (List<User>)entityManager.createQuery("select c from User c").getResultList();
+        for (User c : users) {
+            log.info("user " + c.getLogin());
+        }
+        m.addAttribute("users", users);
+        
+        //Clans
+        List<Clan> clans = (List<Clan>)entityManager.createQuery("select c from Clan c").getResultList();
+        for (Clan c : clans) {
+            log.info("clan " + c.getClanName());
+        }
+        m.addAttribute("clans", clans);
+        
+        //Events
+        List<Event> events = (List<Event>)entityManager.createQuery("select c from Event c").getResultList();
+        for (Event c : events) {
+            log.info("event " + c.getEventName());
+        }
+        m.addAttribute("events", events);
 		return "admin";
 	}
 	
