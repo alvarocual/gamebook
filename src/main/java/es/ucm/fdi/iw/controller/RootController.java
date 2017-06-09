@@ -1,7 +1,9 @@
 package es.ucm.fdi.iw.controller;
 
 import java.security.Principal;
+import java.util.Comparator;
 import java.util.List;
+import java.util.TreeSet;
 
 import javax.persistence.EntityManager;
 import javax.servlet.http.HttpSession;
@@ -82,10 +84,15 @@ public class RootController {
 	@Transactional
 	String rootClans(Model m) {
 		List<Clan> clans = (List<Clan>)entityManager.createQuery("select c from Clan c").getResultList();
-        for (Clan c : clans) {
-            log.info("clan " + c.getClanName() + " " + c.getClanGame() + " " + c.getMembers().size());
-        }
-        m.addAttribute("clans", clans);
+		TreeSet<Clan> byElo = new TreeSet<>(new Comparator<Clan>() {
+			@Override
+			public int compare(Clan o1, Clan o2) {
+				int d = o2.getClanELO() - o1.getClanELO();
+				return (d == 0) ? (int)(o1.getId() - o2.getId()) : d;
+			}
+		});
+		byElo.addAll(clans);
+        m.addAttribute("clans", byElo);
         return "clans";
 	}
 	
