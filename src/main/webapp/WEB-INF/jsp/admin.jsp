@@ -40,7 +40,7 @@
 	                <c:forEach items="${users}" var="c" >
 	                <tr>
 	                  <td>${c.login}</td>
-	                  <td> sit </td>
+	                  <td> <a class="btn btn-danger">Delete</a> </td>
 	                </tr>
 	                </c:forEach>
 	              </tbody>
@@ -62,7 +62,7 @@
 	                <c:forEach items="${clans}" var="c" >
 	                <tr>
 	                  <td><a href="viewClan?id=${c.id}">${c.clanName}</a></td>
-	                  <td>sit</td>
+	                  <td><a class="btn btn-danger">Delete</a></td>
 	                </tr>
 	                </c:forEach>
 	              </tbody>
@@ -84,7 +84,7 @@
 	                <c:forEach items="${events}" var="c" >
 	                <tr>
 	                  <td><a href="viewEvent?id=${c.id}">${c.eventName}</a></td>
-	                  <td> sit </td>
+	                  <td> <a class="btn btn-danger">Delete</a> </td>
 	                </tr>
 	                </c:forEach>
 	              </tbody>

@@ -28,9 +28,6 @@
     <div class="container">
 
       <div class="row row-offcanvas row-offcanvas-right">
-          <p class="pull-right visible-xs">
-            <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
-          </p>
           <div class="jumbotron">
           <div class="row">
           	 <div class="col-xs-6 col-lg-4">
@@ -39,6 +36,17 @@
 	         <div class="col-xs-6 col-lg-4"> 	
 	          	<h3>Game: ${clan.clanGame}</h3>
 	          	<p>${clan.clanDescription}</p>
+	         </div>
+	         
+	         <div class="col-xs-6 col-lg-4"> 
+	         
+	         <form action="/joinClan" method="post">
+	         	<a class="btn btn-success">Join Clan</a>
+	         </form>
+			 <form action="/leaveClan" method="post">
+			 	<a class="btn btn-danger">Leave Clan</a>
+			 </form>
+			 
 	         </div>
           	</div>
           </div>

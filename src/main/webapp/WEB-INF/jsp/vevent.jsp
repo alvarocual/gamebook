@@ -28,15 +28,25 @@
     <div class="container">
 
       <div class="row row-offcanvas row-offcanvas-right">
-
-          <p class="pull-right visible-xs">
-            <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
-          </p>
           <div class="jumbotron">
-            <h1>${event.eventName}</h1>
-            <h3>${event.eventDescription}</h3>
-            <h3>${event.eventGame.gameName}</h3>
-            <h4>Fecha inicio: ${event.ini} / Fecha fin: ${event.fin}</h4>
+	         <div class="row">
+	          	<div class="col-xs-6 col-lg-4">
+	            	<h1>${event.eventName}</h1>
+	            </div>
+	            <div class="col-xs-6 col-lg-4">
+	            <h3>${event.eventDescription}</h3>
+	            <h3>${event.eventGame.gameName}</h3>
+	            <h4>Fecha inicio: ${event.ini} / Fecha fin: ${event.fin}</h4>
+	            </div>
+	            <div class="col-xs-6 col-lg-4">
+	            	<form action="/joinEvent" method="post">
+	         	<a class="btn btn-success">Join Event</a>
+	         </form>
+			 <form action="/leaveEvent" method="post">
+			 	<a class="btn btn-danger">Leave Event</a>
+			 </form>
+	            </div>
+	         </div>
           </div>
           
           <div class="row">

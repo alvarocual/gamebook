@@ -43,7 +43,7 @@
 			         <c:otherwise>
 			   			<div>
 						  <form class="navbar-form navbar-right" action="/logout" method="post">
-						  <font color=white> <p>Welcome, <c:out value = "${user.login}"/> !</p></font>
+						  <p><font color=white> Welcome, <c:out value = "${user.login}"/> !</font></p>
 						  <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 				            <button type="submit" class="btn btn-danger">Log out</button>
 				          <a href="viewUser?id=${user.id}" class="btn btn-success">My profile</a>

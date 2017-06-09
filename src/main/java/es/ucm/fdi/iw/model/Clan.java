@@ -67,6 +67,11 @@ public class Clan {
 	}
 	
 	@Transient
+	public void addMember(User memberID) {
+		getMembers().add(memberID);
+	}
+	
+	@Transient
 	public int getMemberCount() {
 		return members.size();
 	}

@@ -45,25 +45,27 @@
           <div class="row">
 	          <div class="col-xs-6 col-lg-4">
 		          
-		            	<h2 class="sub-header">Games</h2>
+		            	<h2 class="sub-header">Events</h2>
 		            	<div class="table-responsive">
 				            <table class="table table-striped">
-				              <thead>
-				                <tr>
-				                  <th>Name</th>
-				                  <th>Description</th>
-				                  <th>Price</th>
-				                </tr>
-				              </thead>
-				              <tbody>
-				                <c:forEach items="${user.games}" var="c" >
-				                <tr>
-				                  <td> ${c.gameName}</td>
-				                  <td> ${c.gameDescription}</td>
-				                  <td> ${c.price}</td>
-				                </tr>
-				                </c:forEach>
-				              </tbody>
+				               <thead>
+					                <tr>
+					                  <th>Name</th>
+					                  <th>Game</th>
+					                  <th>Description</th>
+					                  <th>Leave Event</th>
+					                </tr>
+					              </thead>
+					              <tbody>
+						                <c:forEach items="${user.events}" var="e" >
+						                <tr>
+						                  <td><a href="/viewEvent?id=${e.id}">${e.eventName}</a></td>
+						                  <td> ${e.eventGame.gameName}</td>
+						                  <td> ${e.eventDescription}</td>
+						                  <td> <a class="btn btn-danger">Leave Event</a></td>
+						                </tr>
+						                </c:forEach>
+						         </tbody>
 				            </table>
 			            </div>
 	            </div><!--/.col-xs-6.col-lg-4-->
@@ -86,7 +88,7 @@
 		                  <td><a href="viewClan?id=${c.id}">${c.clanName}</a></td>
 		                  <td> ${c.clanGame}</td>
 		                  <td> ${c.memberCount}</td>
-		                  <td> sit </td>
+		                  <td> <a class="btn btn-danger">Leave Clan</a> </td>
 		                </tr>
 		                </c:forEach>
 		              </tbody>
@@ -98,27 +100,25 @@
 
         <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
           <div class="list-group">
-             <h2 class="sub-header">Event list</h2>
+             <h2 class="sub-header">Games</h2>
              <div class="table-responsive">
 	            <table class="table table-striped">
 	              <thead>
 	                <tr>
 	                  <th>Name</th>
-	                  <th>Game</th>
 	                  <th>Description</th>
-	                  <th>Leave Event</th>
+	                  <th>Price</th>
 	                </tr>
 	              </thead>
 	              <tbody>
-		                <c:forEach items="${user.events}" var="e" >
-		                <tr>
-		                  <td><a href="/viewEvent?id=${e.id}">${e.eventName}</a></td>
-		                  <td> ${e.eventGame.gameName}</td>
-		                  <td> ${e.eventDescription}</td>
-		                  <td> sit</td>
-		                </tr>
-		                </c:forEach>
-		           </tbody>
+	                <c:forEach items="${user.games}" var="c" >
+	                <tr>
+	                  <td> ${c.gameName}</td>
+	                  <td> ${c.gameDescription}</td>
+	                  <td> ${c.price}</td>
+	                </tr>
+	                </c:forEach>
+	              </tbody>	              
 		        </table>
           </div>
         </div><!--/.sidebar-offcanvas-->

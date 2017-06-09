@@ -28,7 +28,7 @@
   <body>
         <%@ include file="../jspf/header.jspf" %>
         
-          <h2 class="sub-header">List 15 Clans</h2>
+          <h2 class="sub-header">List of Clans</h2>
           <div class="table-responsive">
             <table class="table table-striped">
               <thead>
@@ -37,6 +37,7 @@
                   <th>Game</th>
                   <th>Number of Members</th>
                   <th>Join Request</th>
+                  <th>Leave Request</th>
                 </tr>
               </thead>
               <tbody>
@@ -45,7 +46,8 @@
                   <td><a href="viewClan?id=${c.id}">${c.clanName}</a></td>
                   <td>${c.clanGame}</td>
                   <td>${c.memberCount}</td>
-                  <td>sit</td>
+                  <td><a class="btn btn-success">Join</a></td>
+                  <td><a class="btn btn-danger">Leave</a></td>
                 </tr>
                 </c:forEach>
               </tbody>

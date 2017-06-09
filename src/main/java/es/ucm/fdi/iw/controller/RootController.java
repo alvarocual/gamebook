@@ -1,5 +1,7 @@
 package es.ucm.fdi.iw.controller;
 
+import static org.assertj.core.api.Assertions.setAllowComparingPrivateFields;
+
 import java.security.Principal;
 import java.util.Comparator;
 import java.util.List;
@@ -89,6 +91,13 @@ public class RootController {
     public String testViewClan(@RequestParam long id, Model m) {
         m.addAttribute("clan", entityManager.find(Clan.class, id));
         return "vclan";
+    }
+	
+	@GetMapping("joinClan")
+    @Transactional
+    public String testJoinClan(Clan c, User u) {
+		c.addMember(u);
+        return "Welcome!";
     }
 	
 	@GetMapping("/vclan")
