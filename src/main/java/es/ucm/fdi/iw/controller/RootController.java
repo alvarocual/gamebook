@@ -18,9 +18,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import es.ucm.fdi.iw.model.Clan;
 import es.ucm.fdi.iw.model.Event;
@@ -93,11 +91,16 @@ public class RootController {
         return "vclan";
     }
 	
-	@GetMapping("joinClan")
+	@RequestMapping(value = "joinClan", method = RequestMethod.POST)
     @Transactional
-    public String testJoinClan(Clan c, User u) {
-		c.addMember(u);
-        return "Welcome!";
+    public String testJoinClan(@RequestParam long idClan, HttpSession session) {
+		User u = (User)session.getAttribute("user"); // <- usuario "congelado" a partir de sesion
+		u = entityManager.find(User.class, u.getId());     // <- consigue version "fresca"
+		Clan c = entityManager.find(Clan.class, idClan);
+		if ( ! u.getClans().contains(c)) {
+			u.getClans().add(c);     // <- la parte importante
+		}
+        return "bienvenido al clan"; // <- elige una vista mejor
     }
 	
 	@GetMapping("/vclan")
