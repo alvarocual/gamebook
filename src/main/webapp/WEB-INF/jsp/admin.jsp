@@ -37,10 +37,17 @@
 	                </tr>
 	              </thead>
 	              <tbody>
-	                <c:forEach items="${users}" var="c" >
+	                <c:forEach items="${users}" var="u" >
 	                <tr>
-	                  <td>${c.login}</td>
-	                  <td> <a class="btn btn-danger">Delete</a> </td>
+	                  <td>${u.login}</td>
+	                  <td>
+	                   <form action="/deleteU" method="post">
+	      	 				<input type = "hidden" name = "id" value = "${u.id}" />
+	         				<input type = "hidden" name = "${_csrf.parameterName}" value = "${_csrf.token}"/>
+ 
+                  			 	<button class="btn btn-danger">Delete</button>
+	        			</form>
+	                   </td>
 	                </tr>
 	                </c:forEach>
 	              </tbody>
@@ -62,7 +69,14 @@
 	                <c:forEach items="${clans}" var="c" >
 	                <tr>
 	                  <td><a href="viewClan?id=${c.id}">${c.clanName}</a></td>
-	                  <td><a class="btn btn-danger">Delete</a></td>
+	                  <td>
+	                     <form action="/deleteC" method="post">
+	      	 				<input type = "hidden" name = "id" value = "${c.id}" />
+	         				<input type = "hidden" name = "${_csrf.parameterName}" value = "${_csrf.token}"/>
+ 
+                  			 	<button class="btn btn-danger">Delete</button>
+	        			 </form>
+	                  </td>
 	                </tr>
 	                </c:forEach>
 	              </tbody>
@@ -81,10 +95,17 @@
 	                </tr>
 	              </thead>
 	              <tbody>
-	                <c:forEach items="${events}" var="c" >
+	                <c:forEach items="${events}" var="e" >
 	                <tr>
-	                  <td><a href="viewEvent?id=${c.id}">${c.eventName}</a></td>
-	                  <td> <a class="btn btn-danger">Delete</a> </td>
+	                  <td><a href="viewEvent?id=${e.id}">${e.eventName}</a></td>
+	                  <td>
+	                   <form action="/deleteE" method="post">
+	      	 				<input type = "hidden" name = "id" value = "${e.id}" />
+	         				<input type = "hidden" name = "${_csrf.parameterName}" value = "${_csrf.token}"/>
+ 
+                  			<button class="btn btn-danger">Delete</button>
+	        			</form>
+	                  </td>
 	                </tr>
 	                </c:forEach>
 	              </tbody>

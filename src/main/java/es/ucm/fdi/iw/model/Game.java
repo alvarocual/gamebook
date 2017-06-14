@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 
 
 @Entity
@@ -20,7 +21,7 @@ public class Game {
 	private double price;
 	private List<User> gameUsers;
 	private List<Event> gameEvents;
-	
+	private List<Clan> gameClans;
 	
 	@Id
 	@GeneratedValue
@@ -72,6 +73,25 @@ public class Game {
 	}
 	public void setGameEvents(List<Event> gameEvents) {
 		this.gameEvents = gameEvents;
+	}
+	
+	@OneToMany(targetEntity=Clan.class)
+	@JoinColumn(name="id") // <-- this avoids creating an extra User_Book table
+	public List<Clan> getGameClans() {
+		return gameClans;
+	}
+	public void setGameClans(List<Clan> gameClans) {
+		this.gameClans = gameClans;
+	}
+	
+	@Transient
+	public int getgameUsersCount() {
+		return gameUsers.size();
+	}
+	
+	@Transient
+	public int getgameEventsCount() {
+		return gameEvents.size();
 	}
 }
 

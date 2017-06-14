@@ -43,7 +43,7 @@
           </div>
           
           <div class="row">
-	          <div class="col-xs-6 col-lg-4">
+	          <div class="col-xs-6 col-lg-6">
 		          
 		            	<h2 class="sub-header">Events</h2>
 		            	<div class="table-responsive">
@@ -62,7 +62,13 @@
 						                  <td><a href="/viewEvent?id=${e.id}">${e.eventName}</a></td>
 						                  <td> ${e.eventGame.gameName}</td>
 						                  <td> ${e.eventDescription}</td>
-						                  <td> <a class="btn btn-danger">Leave Event</a></td>
+						                  <td> 
+						                  <form action="/leaveEvent" method="post">
+											<input type = "hidden" name = "id" value = "${e.id}" />
+								         	<input type = "hidden" name = "${_csrf.parameterName}" value = "${_csrf.token}" />
+								         	<button class="btn btn-danger">Leave Event</button>
+										  </form>
+						                  </td>
 						                </tr>
 						                </c:forEach>
 						         </tbody>
@@ -70,7 +76,7 @@
 			            </div>
 	            </div><!--/.col-xs-6.col-lg-4-->
             
-            <div class="col-xs-6 col-lg-4">
+            <div class="col-xs-6 col-lg-6">
               <h2 class="sub-header">Clans</h2>
               <div class="table-responsive">
 		            <table class="table table-striped">
@@ -86,9 +92,15 @@
 		                <c:forEach items="${user.clans}" var="c" >
 		                <tr>
 		                  <td><a href="viewClan?id=${c.id}">${c.clanName}</a></td>
-		                  <td> ${c.clanGame}</td>
+		                  <td> ${c.clanGame.gameName}</td>
 		                  <td> ${c.memberCount}</td>
-		                  <td> <a class="btn btn-danger">Leave Clan</a> </td>
+		                  <td> 
+		                  	<form action="/leaveClan" method="post">
+								<input type = "hidden" name = "id" value = "${c.id}" />
+					         	<input type = "hidden" name = "${_csrf.parameterName}" value = "${_csrf.token}" />
+					         	<button class="btn btn-danger">Leave Clan</button>
+							 </form> 
+		                  </td>
 		                </tr>
 		                </c:forEach>
 		              </tbody>
@@ -120,7 +132,7 @@
 	                </c:forEach>
 	              </tbody>	              
 		        </table>
-          </div>
+          </div>          
         </div><!--/.sidebar-offcanvas-->
       </div><!--/row-->
       

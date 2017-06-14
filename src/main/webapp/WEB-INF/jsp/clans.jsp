@@ -34,8 +34,10 @@
               <thead>
                 <tr>
                   <th>Clan's name</th>
+                  <th>Description</th>
                   <th>Game</th>
                   <th>Number of Members</th>
+                  <th>Number of Events</th>
                   <th>Join Request</th>
                   <th>Leave Request</th>
                 </tr>
@@ -44,10 +46,42 @@
                 <c:forEach items="${clans}" var="c" >
                 <tr>
                   <td><a href="viewClan?id=${c.id}">${c.clanName}</a></td>
-                  <td>${c.clanGame}</td>
+                  <td>${c.clanDescription}</td>
+                  <td>${c.clanGame.gameName}</td>
                   <td>${c.memberCount}</td>
-                  <td><a class="btn btn-success">Join</a></td>
-                  <td><a class="btn btn-danger">Leave</a></td>
+                  <td>${c.eventsCount}</td>
+                  
+                  <td>
+                  	<form action="/joinClan" method="post">
+	      	 			<input type = "hidden" name = "id" value = "${c.id}" />
+	         			<input type = "hidden" name = "${_csrf.parameterName}" value = "${_csrf.token}" />
+	   
+	         			<c:choose>
+			         		<c:when test = "${user == null}">
+                  				<button disabled = "true" class="btn btn-success">Join Clan</button>
+                  	 		</c:when>
+                  	 	<c:otherwise>
+                  	 	<button class="btn btn-success">Join Clan</button>
+                  	 	</c:otherwise>
+                  		</c:choose>
+	         		</form>
+                  </td>
+                  
+                  <td>
+		             <form action="/leaveClan" method="post">
+						<input type = "hidden" name = "id" value = "${c.id}" />
+			         	<input type = "hidden" name = "${_csrf.parameterName}" value = "${_csrf.token}" />
+			         	
+					 	<c:choose>
+		                  	<c:when test = "${user == null}">
+		                  		<button disabled = "true" class="btn btn-danger">Leave Clan</button>
+		                  	 </c:when>
+		                  	 <c:otherwise>
+		                  	 	<button class="btn btn-danger">Leave Clan</button>
+		                  	 </c:otherwise>
+		                  </c:choose>
+					 </form>
+                  </td>
                 </tr>
                 </c:forEach>
               </tbody>

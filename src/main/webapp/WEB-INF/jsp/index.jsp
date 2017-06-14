@@ -43,7 +43,7 @@
             <div class="carousel-caption">
               <h1>Join us! We have cookies</h1>
               <p>Create your user profile and unlock a lot of advantages</p>
-              <p><a class="btn btn-lg btn-primary" href="#" role="button">Register</a></p>
+              <p><a class="btn btn-lg btn-primary" href="userRegister" role="button">Register</a></p>
             </div>
           </div>
         </div>

@@ -40,11 +40,31 @@
 	            </div>
 	            <div class="col-xs-6 col-lg-4">
 	            	<form action="/joinEvent" method="post">
-	         	<a class="btn btn-success">Join Event</a>
-	         </form>
-			 <form action="/leaveEvent" method="post">
-			 	<a class="btn btn-danger">Leave Event</a>
-			 </form>
+			      	 	<input type = "hidden" name = "id" value = "${event.id}" />
+			         	<input type = "hidden" name = "${_csrf.parameterName}" value = "${_csrf.token}" />
+			   
+			         	<c:choose>
+					         <c:when test = "${user == null}">
+		                  		<button disabled = "true" class="btn btn-success">Join Event</button>
+		                  	 </c:when>
+		                  	 <c:otherwise>
+		                  	 	<button class="btn btn-success">Join Event</button>
+		                  	 </c:otherwise>
+		                  </c:choose>
+	         		</form>
+			 		<form action="/leaveEvent" method="post">
+			      	 	<input type = "hidden" name = "id" value = "${event.id}" />
+			         	<input type = "hidden" name = "${_csrf.parameterName}" value = "${_csrf.token}" />
+			   
+			         	<c:choose>
+					         <c:when test = "${user == null}">
+		                  		<button disabled = "true" class="btn btn-danger">Leave Event</button>
+		                  	 </c:when>
+		                  	 <c:otherwise>
+		                  	 	<button class="btn btn-danger">Leave Event</button>
+		                  	 </c:otherwise>
+		                  </c:choose>
+	         		</form>
 	            </div>
 	         </div>
           </div>
@@ -66,7 +86,7 @@
 				                <c:forEach items="${event.clans}" var="c" >
 				                <tr>
 				                  <td><a href="viewClan?id=${c.id}">${c.clanName}</a></td>
-				                  <td> ${c.clanGame}</td>
+				                  <td> ${c.clanGame.gameName}</td>
 				                  <td> ${c.clanDescription}</td>
 				                  <td> ${c.memberCount}</td>
 				                </tr>

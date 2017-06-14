@@ -88,7 +88,6 @@ public class Event {
 		this.clans = clans;
 	}
 	
-	
 	//La función escapeEcmaScript sirve para escapar los caracteres del
 	//nombre, la fecha de inicio y la fecha de fin de los eventos.
 	//De esta forma evitamos vulnerabilidades por inyección de JS.

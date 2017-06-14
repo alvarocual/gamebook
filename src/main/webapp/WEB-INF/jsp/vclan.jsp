@@ -34,17 +34,37 @@
 	          	<h1>${clan.clanName}</h1>
 	         </div>
 	         <div class="col-xs-6 col-lg-4"> 	
-	          	<h3>Game: ${clan.clanGame}</h3>
+	          	<h3>Game: ${clan.clanGame.gameName}</h3>
 	          	<p>${clan.clanDescription}</p>
 	         </div>
 	         
 	         <div class="col-xs-6 col-lg-4"> 
 	         
 	         <form action="/joinClan" method="post">
-	         	<a class="btn btn-success">Join Clan</a>
+	      	 	<input type = "hidden" name = "id" value = "${clan.id}" />
+	         	<input type = "hidden" name = "${_csrf.parameterName}" value = "${_csrf.token}" />
+	   
+	         	<c:choose>
+			         <c:when test = "${user == null}">
+                  		<button disabled = "true" class="btn btn-success">Join Clan</button>
+                  	 </c:when>
+                  	 <c:otherwise>
+                  	 	<button class="btn btn-success">Join Clan</button>
+                  	 </c:otherwise>
+                  </c:choose>
 	         </form>
 			 <form action="/leaveClan" method="post">
-			 	<a class="btn btn-danger">Leave Clan</a>
+				<input type = "hidden" name = "id" value = "${clan.id}" />
+	         	<input type = "hidden" name = "${_csrf.parameterName}" value = "${_csrf.token}" />
+	         	
+			 	<c:choose>
+                  	<c:when test = "${user == null}">
+                  		<button disabled = "true" class="btn btn-danger">Leave Clan</button>
+                  	 </c:when>
+                  	 <c:otherwise>
+                  	 	<button class="btn btn-danger">Leave Clan</button>
+                  	 </c:otherwise>
+                  </c:choose>
 			 </form>
 			 
 	         </div>

@@ -11,7 +11,7 @@ public class Clan {
 	private String clanDescription;
 	private int clanELO;
 	private String clanName;
-	private String clanGame;
+	private Game clanGame;
 	private List<User> members;
 	private List<Event> events;
  	
@@ -41,12 +41,13 @@ public class Clan {
 		this.clanDescription = desc;
 	}
 	
-	public String getClanGame(){
-		return this.clanGame;
+	@ManyToOne(targetEntity=Game.class)
+	public Game getClanGame() {
+		return clanGame;
 	}
 	
-	public void setClanGame(String game){
-		this.clanGame = game;
+	public void setClanGame(Game clanGame) {
+		this.clanGame = clanGame;
 	}
 
 	public int getClanELO(){
@@ -74,6 +75,11 @@ public class Clan {
 	@Transient
 	public int getMemberCount() {
 		return members.size();
+	}
+	
+	@Transient
+	public int getEventsCount() {
+		return events.size();
 	}
 	
 	@ManyToMany(targetEntity=Event.class, mappedBy="clans")
